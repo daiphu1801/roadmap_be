@@ -1,5 +1,5 @@
 // Shared roadmap configuration constants
-export const ROADMAP_START_DATE = new Date(2026, 1, 17); // 17/02/2026
+export const ROADMAP_START_DATE = new Date(2026, 1, 23); // 23/02/2026
 export const TOTAL_DAYS = 168;
 export const DAYS_PER_MONTH = 28;
 export const DAYS_PER_WEEK = 7;
