@@ -6,6 +6,7 @@ import { Music } from "lucide-react";
 import { roadmapData } from "@/data/roadmap";
 import { Month, Topic, TaskItem } from "@/lib/types";
 import { getDayPlan } from "@/data/dailyPlans";
+import { getRoadmapStartDate } from "@/lib/roadmapConfig";
 
 // Components
 import HeroSection from "@/components/dashboard/HeroSection";
@@ -26,8 +27,7 @@ const mockProgress = {
 
 // Helper functions
 const getDayCount = () => {
-  const start = new Date(mockProgress.startDate);
-  start.setHours(0, 0, 0, 0);
+  const start = getRoadmapStartDate();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const diffTime = today.getTime() - start.getTime();
@@ -37,8 +37,7 @@ const getDayCount = () => {
 const hasStarted = () => getDayCount() >= 1;
 
 const getDaysUntilStart = () => {
-  const start = new Date(mockProgress.startDate);
-  start.setHours(0, 0, 0, 0);
+  const start = getRoadmapStartDate();
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   return Math.ceil((start.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
