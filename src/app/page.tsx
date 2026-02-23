@@ -7,6 +7,7 @@ import { roadmapData } from "@/data/roadmap";
 import { Month, Topic, TaskItem } from "@/lib/types";
 import { getDayPlan } from "@/data/dailyPlans";
 import { getRoadmapStartDate } from "@/lib/roadmapConfig";
+import { useRoadmapStore } from "@/lib/store";
 
 // Components
 import HeroSection from "@/components/dashboard/HeroSection";
@@ -14,16 +15,6 @@ import StatsGrid from "@/components/dashboard/StatsGrid";
 import TodayPlaylist from "@/components/dashboard/TodayPlaylist";
 import MonthlyCards from "@/components/dashboard/MonthlyCards";
 import ContributionHeatmap from "@/components/dashboard/ContributionHeatmap";
-
-// Mock data - will be replaced with Zustand store
-const mockProgress = {
-  currentStreak: 0,
-  longestStreak: 0,
-  totalDsaSolved: 0,
-  activeDays: [] as string[],
-  completedTasks: [] as string[],
-  startDate: "2026-02-12T07:00:00+07:00",
-};
 
 // Helper functions
 const getDayCount = () => {
@@ -51,25 +42,30 @@ const getCurrentMonthAndDay = () => {
   return { month: Math.min(month, 6), day: Math.min(day, 28) };
 };
 
-const getTotalProgress = () => {
-  let total = 0;
-  let completed = 0;
-  roadmapData.forEach((month: Month) => {
-    month.topics.forEach((topic: Topic) => {
-      topic.items.forEach((item: TaskItem) => {
-        total++;
-        if (mockProgress.completedTasks.includes(item.id)) completed++;
+export default function DashboardPage() {
+  // ✅ Pull all stats from Zustand store (persisted in localStorage)
+  const { completedTasks, currentStreak, activeDays, getDsaStats } = useRoadmapStore();
+
+  // Compute total progress from store's completedTasks
+  const totalProgress = (() => {
+    let total = 0;
+    let completed = 0;
+    roadmapData.forEach((month: Month) => {
+      month.topics.forEach((topic: Topic) => {
+        topic.items.forEach((item: TaskItem) => {
+          total++;
+          if (completedTasks.includes(item.id)) completed++;
+        });
       });
     });
-  });
-  return total > 0 ? Math.round((completed / total) * 100) : 0;
-};
+    return total > 0 ? Math.round((completed / total) * 100) : 0;
+  })();
 
-export default function DashboardPage() {
+  const dsaStats = getDsaStats();
+
   const dayCount = getDayCount();
   const daysUntilStart = getDaysUntilStart();
   const started = hasStarted();
-  const totalProgress = getTotalProgress();
   const { month, day } = getCurrentMonthAndDay();
   const todayPlan = getDayPlan(month, day);
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -94,12 +90,12 @@ export default function DashboardPage() {
           currentTime={currentTime}
         />
 
-        {/* Stats Grid */}
+        {/* Stats Grid — now wired to Zustand store */}
         <StatsGrid
           totalProgress={totalProgress}
-          currentStreak={mockProgress.currentStreak}
-          totalDsaSolved={mockProgress.totalDsaSolved}
-          activeDaysCount={mockProgress.activeDays.length}
+          currentStreak={currentStreak}
+          totalDsaSolved={dsaStats.total}
+          activeDaysCount={activeDays.length}
         />
       </motion.section>
 
@@ -130,9 +126,10 @@ export default function DashboardPage() {
             <span>Giai đoạn {Math.min(Math.max(1, Math.ceil(dayCount / 28)), 6)}/6</span>
           </span>
         </div>
+        {/* MonthlyCards also gets live completedTasks from store */}
         <MonthlyCards
           months={roadmapData}
-          completedTasks={mockProgress.completedTasks}
+          completedTasks={completedTasks}
         />
       </motion.section>
 
@@ -160,14 +157,14 @@ export default function DashboardPage() {
         </div>
       </motion.section>
 
-      {/* Activity Heatmap */}
+      {/* Activity Heatmap — uses store's activeDays */}
       <motion.section
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
         <ContributionHeatmap
-          activeDays={mockProgress.activeDays}
+          activeDays={activeDays}
           monthsToShow={6}
         />
       </motion.section>
