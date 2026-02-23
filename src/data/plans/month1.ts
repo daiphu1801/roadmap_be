@@ -143,25 +143,27 @@ export const month1Plans: DailyPlan[] = [
     },
     {
         day: 12, month: 1,
-        theme: "Collections - List Interface",
+        theme: "Collections Part 1 — List, Queue & Deque",
         focus: "theory",
         tasks: [
-            { id: "m1d12-1", title: "ArrayList internals: dynamic array, resize, amortized O(1)", category: "theory", duration: "45m", priority: "high" },
-            { id: "m1d12-2", title: "LinkedList internals: nodes, O(1) add/remove at head/tail", category: "theory", duration: "45m", priority: "high" },
-            { id: "m1d12-3", title: "Khi nào dùng ArrayList vs LinkedList?", category: "theory", duration: "30m", priority: "high" },
-            { id: "m1d12-4", title: "Best Time to Buy and Sell Stock", category: "dsa", duration: "25m", priority: "high", leetcodeId: 121, leetcodeLink: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", resources: ["Sliding window: track minPrice, cập nhật maxProfit tại mỗi bước"] },
-            { id: "m1d12-5", title: "Longest Substring Without Repeating Characters", category: "dsa", duration: "35m", priority: "high", leetcodeId: 3, leetcodeLink: "https://leetcode.com/problems/longest-substring-without-repeating-characters/", resources: ["Dynamic sliding window: HashSet + left pointer thu hẹp khi gặp duplicate"] },
+            { id: "m1d12-1", title: "ArrayList vs LinkedList: internals, Big O mỗi thao tác, khi nào chọn cái nào", category: "theory", duration: "45m", priority: "high" },
+            { id: "m1d12-2", title: "Queue & Deque: ArrayDeque (dùng như Stack lẫn Queue), LinkedList as Queue. offer/poll/peek vs add/remove", category: "theory", duration: "45m", priority: "high" },
+            { id: "m1d12-3", title: "PriorityQueue: min-heap mặc định, custom Comparator để đảo chiều. Ứng dụng: lấy K phần tử lớn nhất/nhỏ nhất", category: "theory", duration: "40m", priority: "high" },
+            { id: "m1d12-4", title: "Code thực hành: implement Task Scheduler dùng PriorityQueue, BFS dùng Queue, Undo/Redo dùng Deque", category: "practice", duration: "40m", priority: "high" },
+            { id: "m1d12-5", title: "Best Time to Buy and Sell Stock", category: "dsa", duration: "25m", priority: "high", leetcodeId: 121, leetcodeLink: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", resources: ["Sliding window: track minPrice, cập nhật maxProfit tại mỗi bước"] },
         ]
     },
     {
         day: 13, month: 1,
-        theme: "Collections - Set & Map",
+        theme: "Collections Part 2 — Set, Map & Choosing the Right Structure",
         focus: "theory",
         tasks: [
-            { id: "m1d13-1", title: "HashSet vs TreeSet vs LinkedHashSet", category: "theory", duration: "45m", priority: "high" },
-            { id: "m1d13-2", title: "HashMap internals: buckets, load factor, collision resolution", category: "theory", duration: "45m", priority: "high" },
-            { id: "m1d13-3", title: "equals() và hashCode() contract — tại sao phải override cả hai?", category: "theory", duration: "30m", priority: "high" },
-            { id: "m1d13-4", title: "Longest Repeating Character Replacement", category: "dsa", duration: "40m", priority: "high", leetcodeId: 424, leetcodeLink: "https://leetcode.com/problems/longest-repeating-character-replacement/", resources: ["Sliding window: window_size - max_freq <= k"] },
+            { id: "m1d13-1", title: "Set variants: HashSet O(1) lookup, LinkedHashSet giữ insertion order, TreeSet sorted O(log n). Khi nào dùng cái nào?", category: "theory", duration: "35m", priority: "high" },
+            { id: "m1d13-2", title: "Map variants: HashMap O(1), LinkedHashMap giữ thứ tự, TreeMap sorted by key O(log n), EnumMap. equals() & hashCode() contract", category: "theory", duration: "45m", priority: "high" },
+            { id: "m1d13-3", title: "Comparable vs Comparator: tại sao cần? Cách implement, dùng với Collections.sort() và TreeSet/TreeMap", category: "theory", duration: "30m", priority: "high" },
+            { id: "m1d13-4", title: "Bảng tổng hợp: chọn Collection nào cho từng bài toán (trùng lặp, thứ tự, sort, priority...)", category: "practice", duration: "30m", priority: "high" },
+            { id: "m1d13-5", title: "Longest Substring Without Repeating Characters", category: "dsa", duration: "35m", priority: "high", leetcodeId: 3, leetcodeLink: "https://leetcode.com/problems/longest-substring-without-repeating-characters/", resources: ["Dynamic sliding window: HashSet + left pointer thu hẹp khi gặp duplicate"] },
+            { id: "m1d13-6", title: "Longest Repeating Character Replacement", category: "dsa", duration: "40m", priority: "high", leetcodeId: 424, leetcodeLink: "https://leetcode.com/problems/longest-repeating-character-replacement/", resources: ["Sliding window: window_size - max_freq <= k"] },
         ]
     },
     {
