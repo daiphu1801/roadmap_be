@@ -92,7 +92,7 @@ export const useRoadmapStore = create<RoadmapStore>()(
             currentStreak: 0,
             longestStreak: 0,
             startDate: format(new Date(), 'yyyy-MM-dd'),
-            currentStudyDay: 1,
+            currentStudyDay: 2,
             solvedProblems: [],
             dailyTasks: [],
             notes: [],

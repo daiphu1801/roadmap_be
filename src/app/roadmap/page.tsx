@@ -6,7 +6,7 @@ import { roadmapData } from "@/data/roadmap";
 import { ArrowRight, CheckCircle2, Circle, Clock } from "lucide-react";
 import { Topic, TaskItem } from "@/lib/types";
 
-// Completed tasks - bắt đầu từ tháng 2/2026 (Month 1)
+// Completed tasks - bắt đầu từ tháng 4/2026 (Month 1)
 const completedTasks: string[] = [];
 
 const getMonthProgress = (monthId: number): number => {

@@ -22,7 +22,7 @@ export default function CountdownView({ daysSinceStart }: CountdownViewProps) {
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--accent-primary)]/30 mb-6">
                 <span className="text-lg">📅</span>
                 <div className="text-left">
-                    <p className="font-bold text-[var(--text-primary)]">Thứ 5, 12/02/2026</p>
+                    <p className="font-bold text-[var(--text-primary)]">Thứ 4, 01/04/2026</p>
                     <p className="text-sm text-[var(--text-muted)]">7:00 sáng (giờ Việt Nam)</p>
                 </div>
             </div>

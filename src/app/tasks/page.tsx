@@ -90,7 +90,7 @@ export default function TasksPage() {
                 </p>
                 {!hasRoadmapStarted ? (
                     <p className="text-sm text-[var(--text-muted)] mt-2">
-                        ⏰ Bắt đầu: Thứ 5, 12/02/2026 lúc 7:00 sáng • Còn <span className="font-bold text-[var(--accent-primary)]">{Math.abs(daysSinceStart) + 1} ngày</span>
+                        ⏰ Bắt đầu: Thứ 4, 01/04/2026 lúc 7:00 sáng • Còn <span className="font-bold text-[var(--accent-primary)]">{Math.abs(daysSinceStart) + 1} ngày</span>
                     </p>
                 ) : (
                     <p className="text-sm text-[var(--text-muted)] mt-2">

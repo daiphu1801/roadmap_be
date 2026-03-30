@@ -11,7 +11,7 @@ export default function StudySessionTracker() {
     const { activeDays, completedTasks } = useRoadmapStore();
 
     const today = new Date();
-    const startDate = new Date(2026, 1, 12); // Feb 12, 2026
+    const startDate = new Date(2026, 3, 1); // Apr 1, 2026
     const hasStarted = today >= startDate;
     const daysSinceStart = hasStarted ? differenceInDays(today, startDate) + 1 : 0;
 
